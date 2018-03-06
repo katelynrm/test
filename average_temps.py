@@ -16,8 +16,8 @@ aveTemp = [-3.5, -4.5, -1.0, 4.0, 10.0, 15.0, 18.0, 16.0, 11.5, 6.0, 2.0, -1.5]
 #Following variable is the month for which the script will find the ave temp of
 inputMonth = 'June'
 
-
-
+#Following will find the index of the inputMonth
+indexInputMonth = monthList.index(inputMonth)
 
 
 
