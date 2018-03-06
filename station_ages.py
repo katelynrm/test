@@ -34,7 +34,7 @@ stationNames = ['Harmaja', 'Kaisaniemi', 'Kaivopuisto', 'Kumpula', 'lighthouse',
 stationStartYears = [1989, 1844, 1904, 2005, 2003, 1937, 2016, 2012]
 
 # Set the selected station
-selectedStation = 1
+selectedStation = stationNames[0]
 
 # Find location of selected station
 stationIndex = stationNames.index(selectedStation)
