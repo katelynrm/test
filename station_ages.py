@@ -24,7 +24,7 @@ Author:
 Modified by:
     None
 '''
-#see the change?
+
 # Create and fill lists of station names and starting years for observation
 #
 # NOTE: Long lines can be split into multiple lines using the "\" character.
@@ -44,4 +44,4 @@ stationYears = 2017 - stationStartYears[selectedStation]
 
 # Print station name and number of years of operation on screen
 print("The Helsinki", selectedStation, "station has been operational for", \
-      stationYears, "years.)
+      stationYears, "years")
