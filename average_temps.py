@@ -19,6 +19,7 @@ inputMonth = 'June'
 #Following will find the index of the inputMonth
 indexInputMonth = monthList.index(inputMonth)
 
-
+#Follwing will calc the temp of the inputMonth
+calcTemp = aveTemp[indexInputMonth]
 
 print('The average temperature in Helskini in', inputMonth, 'is', calcTemp)
