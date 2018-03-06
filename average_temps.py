@@ -13,3 +13,12 @@ monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', \
 #A list of the average temps in C for each month 
 aveTemp = [-3.5, -4.5, -1.0, 4.0, 10.0, 15.0, 18.0, 16.0, 11.5, 6.0, 2.0, -1.5]
 
+#Following variable is the month for which the script will find the ave temp of
+inputMonth = 'June'
+
+
+
+
+
+
+print('The average temperature in Helskini in', inputMonth, 'is', calcTemp)
