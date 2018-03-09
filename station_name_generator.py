@@ -12,9 +12,13 @@ filenames = []
 
 #for loop that will become station numbers
 for stationnumber in range(21):
-    filenames.append(stationnumber)
+    station = basename + "_" + str(stationnumber) + ".txt"
+    filenames.append(station)
+    
+print(filenames)    
     
     
+
     
 
     
