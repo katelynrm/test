@@ -53,8 +53,17 @@ warm = []
 #  4. Warm --> temperatures above +15 degrees (Celsius)
 # ------------------------------------------------------------------------------------------
 
-# Add your code here. 
-
+for temp in temperatures:
+    if temp < -2:
+        cold.append(temp)
+    elif temp > -2 and temp <2:
+        slippery.append(temp)
+    elif temp > 2 and temp < 15:
+        comfortable.append(temp)
+    else:
+        warm.append(temp)
+            
+    
 
 # Task 3 - Questions - Print the answers
 # --------------------------------------
