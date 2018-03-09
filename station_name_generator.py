@@ -10,3 +10,11 @@ basename = "Station"
 #create empty list
 filenames = []
 
+#for loop that will become station numbers
+for stationnumber in range(21):
+    filenames.append(stationnumber)
+    
+    
+    
+
+    
