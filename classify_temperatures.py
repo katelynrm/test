@@ -54,11 +54,11 @@ warm = []
 # ------------------------------------------------------------------------------------------
 
 for temp in temperatures:
-    if temp < -2:
+    if temp < -2.0:
         cold.append(temp)
-    elif temp > -2 and temp <2:
+    elif temp >= -2.0 and temp <2.0:
         slippery.append(temp)
-    elif temp > 2 and temp < 15:
+    elif temp >= 2.0 and temp < 15.0:
         comfortable.append(temp)
     else:
         warm.append(temp)
@@ -71,15 +71,15 @@ for temp in temperatures:
 # 1. How many times was it slippery during the study period?
 
 # Edit these variable (i.e. replace XXX) by finding out how many values are withing different lists
-slippery_times = XXX
+slippery_times = len(slippery)
 print("In April 2013 it was slippery ", slippery_times, "times.")
 
 # 2. How many times was it warm?
-warm_times = XXX
+warm_times = len(warm)
 print("In April 2013 it was warm ", warm_times, "times.")
 
 # 3. How many times was it cold?
-cold_times = XXX
+cold_times = len(cold)
 print("In April 2013 it was cold ", cold_times, "times.")
 
 
