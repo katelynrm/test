@@ -40,8 +40,10 @@ temperatures = [-5.4, 1.0, -1.3, -4.8, 3.9, 0.1, -4.4, 4.0, -2.2, -3.9, 4.4,
 # i.e. cold, slippery, comfortable, warm
 # -------------------------------------------------------------
 
-# Add your code here.
-
+cold = []
+slippery = []
+comfortable = []
+warm = []
 
 # Task 2 - Iterate over temperatures and add temperatures to different temperature classes
 # as defined below:
