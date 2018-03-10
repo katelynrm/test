@@ -106,10 +106,19 @@ print("The names of the South-East stations are:\n", SE)
 
 # Step 4.1 - Calculate the share for different zones
 # Fix the code (replace 0.0 with the result of the calculation)
-nw_share = 0.0
-ne_share = 0.0
-sw_share = 0.0
-se_share = 0.0
+nw_count = len(NW)
+ne_count = len(NE)
+sw_count = len(SW)
+se_count = len(SE)
+station_count = len(stations)
+
+
+
+
+nw_share = (nw_count / station_count * 100)
+ne_share = (ne_count / station_count * 100)
+sw_share = (sw_count / station_count * 100)
+se_share = (se_count / station_count * 100)
 
 # Print the information (you don't need to modify this)
 print("North-West contains", nw_share, "% of all stations.")
