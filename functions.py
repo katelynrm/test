@@ -17,4 +17,6 @@ def fahrToCelsius(tempFahrenheit):
     <float>
     Converted temp
     '''
-        
+    return (tempFahrenheit -32) / 1.8
+
+print("71 degrees Fahrenheit in Celsius is:", fahrToCelsius(71))
