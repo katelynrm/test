@@ -16,6 +16,15 @@ tempClasses = []
 for temp in tD:
     #converting and classifing
     tempCelsius = fTC(temp)
-    tempClass = tC(temp)
+    tempClass = tC(tempCelsius)
     #filling the tempClasses list with the tempClass from above
     tempClasses.append(tempClass)
+    
+print("How many temps are in each class?")
+
+#now to count how many temps are in each class using the count function
+print("There are", tempClasses.count(0), "zeros")
+print("There are", tempClasses.count(1), "ones")
+print("There are", tempClasses.count(2), "twos")
+print("There are", tempClasses.count(3), "threes")
+print("There are a total of", len(tempClasses), "classes")
