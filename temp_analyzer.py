@@ -14,4 +14,8 @@ tempClasses = []
 
 #iterate over the Fahrenheit temps in the tempData list
 for temp in tD:
-    
+    #converting and classifing
+    tempCelsius = fTC(temp)
+    tempClass = tC(temp)
+    #filling the tempClasses list with the tempClass from above
+    tempClasses.append(tempClass)
