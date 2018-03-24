@@ -19,4 +19,24 @@ def fahrToCelsius(tempFahrenheit):
     '''
     return (tempFahrenheit -32) / 1.8
 
-print("71 degrees Fahrenheit in Celsius is:", fahrToCelsius(71))
+def tempClassifier(tempCelsius):
+    '''Classifies temps into 0 1 2 or 3
+    Parameters 
+    ------
+    tempCelsius <numerical>
+    temp in Celsius
+    
+    Returns
+    ------
+    <int>
+    classified temp
+    '''
+    for temp in tempCelsius:
+        if temp < -2:
+            return(0)
+        elif temp >= -2 and temp <=2:
+            return(1)
+        elif temp >2 and temp <=15:
+            return(2)
+        else:
+            return(3)
