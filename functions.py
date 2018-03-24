@@ -31,15 +31,14 @@ def tempClassifier(tempCelsius):
     <int>
     classified temp
     '''
-    for temp in tempCelsius:
-        if temp < -2:
-            return(0)
-        elif temp >= -2 and temp <=2:
-            return(1)
-        elif temp >2 and temp <=15:
-            return(2)
-        else:
-            return(3)
+    if tempCelsius < -2:
+        return(0)
+    elif tempCelsius >= -2 and tempCelsius <=2:
+        return(1)
+    elif tempCelsius >2 and tempCelsius <=15:
+        return(2)
+    else:
+        return(3)
 
             
 print ("The class of 10 degrees Celsius is", tempClassifier(10))           
