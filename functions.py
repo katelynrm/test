@@ -39,6 +39,3 @@ def tempClassifier(tempCelsius):
         return(2)
     else:
         return(3)
-
-            
-print ("The class of 10 degrees Celsius is", tempClassifier(10))           
