@@ -8,5 +8,6 @@ Exercise 5: Manipulating data with Pandas
 """
 import pandas as pd
 
-dataFrame = pd.read_csv('6153237444115dat.csv')
+#Reading in csv and assigning na values as an astrisk
+data = pd.read_csv('6153237444115dat.csv', na_values=['*', '**', '***', '****', '*****', '******'])
 
