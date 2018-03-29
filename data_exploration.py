@@ -53,4 +53,24 @@ kumpula = selected.ix[selected['USAF'] == 29980]
 #Create variable where usaf value is 28450
 rovaniemi = selected.ix[selected['USAF'] == 28450]
 
+#create output variables
+k_output = 'Kumpula_temps_May_Aug_2017.csv'
+
+r_output = 'Rovaniemi_temps_May_Aug_2017.csv'
+
+#writing to csvs
+kumpula.to_csv(k_output, sep=',', float_format="%.2f")
+
+rovaniemi.to_csv(r_output, sep=',', float_format="%.2f")
+
+
+
+
+
+
+
+
+
+
+
 
