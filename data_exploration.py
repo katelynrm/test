@@ -46,7 +46,11 @@ selected['Celsius'] = (selected['TEMP']-32)/1.8
 selected['Celsius'] = selected['Celsius'].round(0)
 
 
+#Part 3 of exercise 5
+#Create variable where usaf value is 29980
+kumpula = selected.ix[selected['USAF'] == 29980]
 
-
+#Create variable where usaf value is 28450
+rovaniemi = selected.ix[selected['USAF'] == 28450]
 
 
