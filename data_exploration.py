@@ -35,9 +35,15 @@ Part 2 of Exercise 5
 
 #creating a new varaible that contains only a few column of the source data
 selected = data[['USAF', 'YR--MODAHRMN', 'TEMP', 'MAX', 'MIN']]
-
-#removing rows with 
+selected.is_copy = None
+#removing rows with na values
 selected.dropna(subset =['TEMP'])
+
+#convert Temp
+selected['Celsius'] = (selected['TEMP']-32)/1.8
+
+#round values
+selected['Celsius'] = selected['Celsius'].round(0)
 
 
 
