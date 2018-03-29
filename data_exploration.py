@@ -10,7 +10,7 @@ import pandas as pd
 
 #Reading in csv and assigning na values as an astrisk
 data = pd.read_csv('6153237444115dat.csv', na_values=['*', '**', '***', '****', '*****', '******'])
-
+'''
 #print the names of the columns in the table
 print(data.columns)
 
@@ -28,3 +28,19 @@ print("The standard deviation of the max temp is:", data['MAX'].std())
 
 #print the number of unique values of USAF
 print("The number of unique values in USAF is:", data['USAF'].nunique())
+
+
+Part 2 of Exercise 5
+'''
+
+#creating a new varaible that contains only a few column of the source data
+selected = data[['USAF', 'YR--MODAHRMN', 'TEMP', 'MAX', 'MIN']]
+
+#removing rows with 
+selected.dropna(subset =['TEMP'])
+
+
+
+
+
+
