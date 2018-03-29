@@ -20,3 +20,11 @@ print ("There are ", len(data.index), "rows")
 #print the data types of the columns
 print(data.dtypes)
 
+#print the mean temp
+print("The mean temperature is:", data['TEMP'].mean())
+
+#print the standard deviation of max temps
+print("The standard deviation of the max temp is:", data['MAX'].std())
+
+#print the number of unique values of USAF
+print("The number of unique values in USAF is:", data['USAF'].nunique())
