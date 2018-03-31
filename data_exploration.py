@@ -63,12 +63,17 @@ r_output = 'Rovaniemi_temps_May_Aug_2017.csv'
 
 #rovaniemi.to_csv(r_output, sep=',', float_format="%.2f")
 
+#Part 4
 #print median temps
-print("The mean temperature of kumpula is:", kumpula['TEMP'].mean())
-print("The mean temperature of rovaniemi is:", rovaniemi['TEMP'].mean())
+print("The mean temperature of kumpula is:", kumpula['Celsius'].mean())
+print("The mean temperature of rovaniemi is:", rovaniemi['Celsius'].mean())
 
+#create variables where MDY is is May
+kumpula_May = kumpula.ix[(kumpula['YR--MODAHRMN']>= 201705010000) & (kumpula['YR--MODAHRMN']<= 201705319999)]
+rovaniemi_May = rovaniemi.ix[(rovaniemi['YR--MODAHRMN']>= 201705010000) & (rovaniemi['YR--MODAHRMN']<= 201705319999)]
 
-
+print("The mean temperature of kumpula in May is:", kumpula_May['Celsius'].mean())
+print("The mean temperature of rovaniemi in May is:", rovaniemi_May['Celsius'].mean())
 
 
 
