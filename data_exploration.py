@@ -59,12 +59,13 @@ k_output = 'Kumpula_temps_May_Aug_2017.csv'
 r_output = 'Rovaniemi_temps_May_Aug_2017.csv'
 
 #writing to csvs
-kumpula.to_csv(k_output, sep=',', float_format="%.2f")
+#kumpula.to_csv(k_output, sep=',', float_format="%.2f")
 
-rovaniemi.to_csv(r_output, sep=',', float_format="%.2f")
+#rovaniemi.to_csv(r_output, sep=',', float_format="%.2f")
 
-
-
+#print median temps
+print("The mean temperature of kumpula is:", kumpula['TEMP'].mean())
+print("The mean temperature of rovaniemi is:", rovaniemi['TEMP'].mean())
 
 
 
