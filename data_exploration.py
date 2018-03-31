@@ -72,15 +72,15 @@ print("The mean temperature of rovaniemi is:", rovaniemi['Celsius'].mean())
 kumpula_May = kumpula.ix[(kumpula['YR--MODAHRMN']>= 201705010000) & (kumpula['YR--MODAHRMN']<= 201705319999)]
 rovaniemi_May = rovaniemi.ix[(rovaniemi['YR--MODAHRMN']>= 201705010000) & (rovaniemi['YR--MODAHRMN']<= 201705319999)]
 
-print("The mean temperature of kumpula in May is:", kumpula_May['Celsius'].mean())
-print("The mean temperature of rovaniemi in May is:", rovaniemi_May['Celsius'].mean())
+print("The mean temp of kumpula in May is:", kumpula_May['Celsius'].mean(), "min is: ", kumpula_May['Celsius'].min(), "max is: ", kumpula_May['Celsius'].max())
+print("The mean temp of rovaniemi in May is:", rovaniemi_May['Celsius'].mean(), "min is: ", rovaniemi_May['Celsius'].min(), "max is: ", rovaniemi_May['Celsius'].max())
 
 #create variables where temps are in June
 kumpula_June = kumpula.ix[(kumpula['YR--MODAHRMN']>= 201706010000) & (kumpula['YR--MODAHRMN']<= 201706309999)]
 rovaniemi_June = rovaniemi.ix[(rovaniemi['YR--MODAHRMN']>= 201706010000) & (rovaniemi['YR--MODAHRMN']<= 201706309999)]
 
-print("The mean temperature of kumpula in June is:", kumpula_June['Celsius'].mean())
-print("The mean temperature of rovaniemi in June is:", rovaniemi_June['Celsius'].mean())
+print("The mean temp of kumpula in June is:", kumpula_June['Celsius'].mean(), "min is: ", kumpula_June['Celsius'].min(), "max is: ", kumpula_June['Celsius'].max())
+print("The mean temp of rovaniemi in June is:", rovaniemi_June['Celsius'].mean(), "min is: ", rovaniemi_June['Celsius'].min(), "max is: ", rovaniemi_June['Celsius'].max())
 
 
 
