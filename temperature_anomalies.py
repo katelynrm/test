@@ -21,5 +21,17 @@ data['TMAX'].count()
 data['DATE'].count()
 
 #finding first and last date
-data['DATE'].ix[0]
-data['DATE'].ix[23715]
+print('The first date is:', data['DATE'].ix[0])
+print('The last data is:', data['DATE'].ix[23715])
+
+#ave temp of entire file
+print('The average temp of all the data is:', data['TAVG'].mean())
+
+#create a summer 69 frame with only summer 69 values
+summer69 = data.ix[(data['DATE']>=19690501) & (data['DATE']<=19690831)]
+
+#reset the index
+summer69 = summer69.reset_index()
+
+#find the max temp of 69
+print('The max temp of the summer of 1969 was:', summer69['TMAX'].max())
