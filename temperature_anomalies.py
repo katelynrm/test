@@ -14,6 +14,7 @@ fp = r'C:\Users\katel\Documents\GeoPythonClass\1091402.txt'
 #Read in the text file, set nan values and fixed width and skip row 2
 data = pd.read_csv(fp, sep='\s+', skiprows=[1], na_values=['-9999'])
 
+''' Problem 1
 #get count of all non values
 data['TAVG'].count()
 data['TMIN'].count()
@@ -22,7 +23,7 @@ data['DATE'].count()
 
 #finding first and last date
 print('The first date is:', data['DATE'].ix[0])
-print('The last data is:', data['DATE'].ix[23715])
+print('The last date is:', data['DATE'].ix[23715])
 
 #ave temp of entire file
 print('The average temp of all the data is:', data['TAVG'].mean())
@@ -35,3 +36,11 @@ summer69 = summer69.reset_index()
 
 #find the max temp of 69
 print('The max temp of the summer of 1969 was:', summer69['TMAX'].max())
+'''
+#Problem 2 = aggregating data into monthly values and exporting  to a csv
+
+
+
+
+
+
