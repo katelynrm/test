@@ -12,5 +12,14 @@ import functions as f
 fp = r'C:\Users\katel\Documents\GeoPythonClass\1091402.txt'
 
 #Read in the text file, set nan values and fixed width and skip row 2
+data = pd.read_csv(fp, sep='\s+', skiprows=[1], na_values=['-9999'])
 
-data = pd.read_csv(fp, sep='\s+', )
+#get count of all non values
+data['TAVG'].count()
+data['TMIN'].count()
+data['TMAX'].count()
+data['DATE'].count()
+
+#finding first and last date
+data['DATE'].ix[0]
+data['DATE'].ix[23715]
