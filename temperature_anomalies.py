@@ -66,27 +66,28 @@ monthlyData['YYYY_MM'] = monthlyData['YYYY_MM'].astype(int)
 monthlyData['TempC'] = (monthlyData['TAVG'] - 32)/1.8
 
 #Problem three
-#Create a new dataframe, aggregate the data then merge back to monthlyData to
-#find anomolies
+#Create a new dataframe, aggregate the data then merge back to monthlyData tofind anomolies
 
 #Create empty dataframe
 referenceTemps = pd.DataFrame()
 
-
 #Create a selection of 52-80 data
-monthlyDataSelection = monthlyData.ix[(monthlyData['YYYY_MM']>=195201) & (monthlyData['YYYY_MM']<=198012)]
-
-monthlyDataSelection = monthlyDataSelection.reset_index()
+monthlyData = monthlyData.ix[(monthlyData['YYYY_MM']>=195201) & (monthlyData['YYYY_MM']<=198012)]
+monthlyData = monthlyData.reset_index()
 #create a new column for last two char of YYYY_MM to be aggregated next
-monthlyDataSelection['Month'] = monthlyDataSelection['YYYY_MM'].astype(str)
-monthlyDataSelection['Month'] = monthlyDataSelection['Month'].str.slice(start=4, stop=6)
-monthlyDataSelection['Month'] = monthlyDataSelection['Month'].astype(int)
-
-del monthlyDataSelection['YYYY_MM']
+monthlyData['Month'] = monthlyData['YYYY_MM'].astype(str)
+monthlyData['Month'] = monthlyData['Month'].str.slice(start=4, stop=6)
+monthlyData['Month'] = monthlyData['Month'].astype(int)
 
 
 #create a varaible for aggregation
-MDSgrouped = monthlyDataSelection.groupby('Month')
+MDSgrouped = monthlyData.groupby('Month')
+
+#iterate  filling empty refernceTemps
+for key, group in MDSgrouped:
+    mean_vals = group[['TempC']].mean()
+    mean_vals['Month'] = key
+    referenceTemps = referenceTemps.append(mean_vals, ignore_index=True)
 
 
 
