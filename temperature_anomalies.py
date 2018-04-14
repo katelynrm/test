@@ -2,6 +2,8 @@
 """
 Created on Sun Apr  8 11:22:34 2018
 
+Exercise 6
+
 @author: katel
 """
 
@@ -14,7 +16,7 @@ fp = r'C:\Users\katel\Documents\GeoPythonClass\1091402.txt'
 #Read in the text file, set nan values and fixed width and skip row 2
 data = pd.read_csv(fp, sep='\s+', skiprows=[1], na_values=['-9999'])
 
-''' Problem 1
+''' Problem 1'''
 #get count of all non values
 data['TAVG'].count()
 data['TMIN'].count()
@@ -36,11 +38,30 @@ summer69 = summer69.reset_index()
 
 #find the max temp of 69
 print('The max temp of the summer of 1969 was:', summer69['TMAX'].max())
-'''
-#Problem 2 = aggregating data into monthly values and exporting  to a csv
 
+#Problem 2 = aggregating data into monthly values 
+#1st convert to str, slice then convert back to int
+data['YYYY_MM'] = data['DATE'].astype(str)
 
+data['YYYY_MM'] = data['YYYY_MM'].str.slice(start=0, stop=6)
 
+data['YYYY_MM'] = data['YYYY_MM'].astype(int)
 
+#create empty dataframe for aggregation
+monthlyData = pd.DataFrame()
+#create varaible to be looped through
+grouped = data.groupby('YYYY_MM')
 
+#iterate over the groups of data
+for key, group in grouped:
+    #aggregate the data
+    mean_values = group[['TAVG']].mean()
+    mean_values['YYYY_MM'] = key
+    #add the data into dataframe
+    monthlyData = monthlyData.append(mean_values, ignore_index=True)
+
+monthlyData['YYYY_MM'] = monthlyData['YYYY_MM'].astype(int)
+
+#create C temp column
+monthlyData['TempC'] = (monthlyData['TAVG'] - 32)/1.8
 
