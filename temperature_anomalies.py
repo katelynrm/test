@@ -68,20 +68,20 @@ monthlyData['TempC'] = (monthlyData['TAVG'] - 32)/1.8
 #Problem three
 #Create a new dataframe, aggregate the data then merge back to monthlyData tofind anomolies
 
-#Create empty dataframe
+#Create empty dataframe that will be filled later
 referenceTemps = pd.DataFrame()
 
-#Create a selection of 52-80 data
-monthlyData = monthlyData.ix[(monthlyData['YYYY_MM']>=195201) & (monthlyData['YYYY_MM']<=198012)]
-monthlyData = monthlyData.reset_index()
+#Create a selection of 52-80 data with a temp dataframe called MounthlyDataS
+monthlyDataS = monthlyData.ix[(monthlyData['YYYY_MM']>=195201) & (monthlyData['YYYY_MM']<=198012)]
+monthlyDataS = monthlyDataS.reset_index()
 #create a new column for last two char of YYYY_MM to be aggregated next
-monthlyData['Month'] = monthlyData['YYYY_MM'].astype(str)
-monthlyData['Month'] = monthlyData['Month'].str.slice(start=4, stop=6)
-monthlyData['Month'] = monthlyData['Month'].astype(int)
+monthlyDataS['Month'] = monthlyDataS['YYYY_MM'].astype(str)
+monthlyDataS['Month'] = monthlyDataS['Month'].str.slice(start=4, stop=6)
+monthlyDataS['Month'] = monthlyDataS['Month'].astype(int)
 
 
-#create a varaible for aggregation
-MDSgrouped = monthlyData.groupby('Month')
+#create a groupby varaible for aggregation
+MDSgrouped = monthlyDataS.groupby('Month')
 
 #iterate  filling empty refernceTemps
 for key, group in MDSgrouped:
@@ -89,17 +89,21 @@ for key, group in MDSgrouped:
     mean_vals['Month'] = key
     referenceTemps = referenceTemps.append(mean_vals, ignore_index=True)
 
+#Create a list to replace month number with name
+#rowMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
+#Replace the number with the name
+#referenceTemps['Month'] = rowMonth
 
+#Rename the TempC column
+referenceTemps = referenceTemps.rename(columns={'TempC':'avgTempsC'})
+#conv back to int
+referenceTemps['Month'] = referenceTemps['Month'].astype(int)
 
+#Begin the merge
+join = monthlyDataS.merge(referenceTemps, on='Month', how='outer')
 
-
-
-
-
-
-
-
+join['Diff']=(join['TempC'])-(join['avgTempsC'])
 
 
 
