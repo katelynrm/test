@@ -1,22 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Apr  8 11:22:34 2018
-
-Exercise 6
+Created on Sat Apr 14 14:54:36 2018
 
 @author: katel
 """
-
 import pandas as pd
-import functions as f
 
 #Set a file path variable
-fp = r'C:\Users\katel\Documents\GeoPythonClass\1091402.txt'
+fp = r'C:\Users\katel\Documents\GeoPythonClass\sodankyla_noaa_raw.txt'
 
 #Read in the text file, set nan values and fixed width and skip row 2
 data = pd.read_csv(fp, sep='\s+', skiprows=[1], na_values=['-9999'])
 
-
+data['TAVG'] = ((data['TMAX'])+(data['TMIN']))/2
 ''' Problem 1'''
 #get count of all non values
 data['TAVG'].count()
@@ -26,19 +22,11 @@ data['DATE'].count()
 
 #finding first and last date
 print('The first date is:', data['DATE'].ix[0])
-print('The last date is:', data['DATE'].ix[23715])
+print('The last date is:', data['DATE'].ix[20546])
 
 #ave temp of entire file
 print('The average temp of all the data is:', data['TAVG'].mean())
 
-#create a summer 69 frame with only summer 69 values
-summer69 = data.ix[(data['DATE']>=19690501) & (data['DATE']<=19690831)]
-
-#reset the index
-summer69 = summer69.reset_index()
-
-#find the max temp of 69
-print('The max temp of the summer of 1969 was:', summer69['TMAX'].max())
 
 #Problem 2 = aggregating data into monthly values 
 #1st convert to str, slice then convert back to int
@@ -70,7 +58,7 @@ monthlyData['TempC'] = (monthlyData['TAVG'] - 32)/1.8
 #Create a new dataframe, aggregate the data then merge back to monthlyData tofind anomolies
 
 #Create empty dataframe that will be filled later
-referenceTemps = pd.DataFrame()
+referenceTempsS = pd.DataFrame()
 
 #Create a selection of 52-80 data with a temp dataframe called MounthlyDataS
 monthlyDataS = monthlyData.ix[(monthlyData['YYYY_MM']>=195901) & (monthlyData['YYYY_MM']<=198012)]
@@ -88,7 +76,7 @@ MDSgrouped = monthlyDataS.groupby('Month')
 for key, group in MDSgrouped:
     mean_vals = group[['TempC']].mean()
     mean_vals['Month'] = key
-    referenceTemps = referenceTemps.append(mean_vals, ignore_index=True)
+    referenceTempsS = referenceTempsS.append(mean_vals, ignore_index=True)
 
 #Create a list to replace month number with name
 #rowMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -97,44 +85,27 @@ for key, group in MDSgrouped:
 #referenceTemps['Month'] = rowMonth
 
 #Rename the TempC column
-referenceTemps = referenceTemps.rename(columns={'TempC':'avgTempsCHelsinki'})
+referenceTempsS = referenceTempsS.rename(columns={'TempC':'avgTempsCSodankyla'})
 #conv back to int
-referenceTemps['Month'] = referenceTemps['Month'].astype(int)
+referenceTempsS['Month'] = referenceTempsS['Month'].astype(int)
 
 #Begin the merge
-join = monthlyDataS.merge(referenceTemps, on='Month', how='outer')
+join = monthlyDataS.merge(referenceTempsS, on='Month', how='outer')
 
-join['Diff']=(join['TempC'])-(join['avgTempsCHelsinki'])
+join['DiffS']=(join['TempC'])-(join['avgTempsCSodankyla'])
 
-
-#create a file path for Helsinki output
-fpH = 'referenceTempsHelsinki.txt'
-#output to csv
-referenceTemps.to_csv(fpH, sep=',')
+#read in Helsinki data for join
+fpH = r'C:\Users\katel\Documents\GeoPythonClass\referenceTempsHelsinki.txt'
+referenceTempsH = pd.read_csv(fpH, sep=',')
 
 
+H_S_join = referenceTempsH.merge(referenceTempsS, on='Month', how='outer')
 
+Cols = ['Month', 'avgTempsCHelsinki', 'avgTempsCSodankyla']
+summerDiffs = H_S_join[Cols]
+summerDiffs = summerDiffs.ix[(summerDiffs['Month']>=6)&(summerDiffs['Month']<=8)]
+summerDiffs = summerDiffs.reset_index()
+summerDiffs['TempDiff'] = (summerDiffs['avgTempsCHelsinki']) - (summerDiffs['avgTempsCSodankyla'])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+fpsummerdiffs = 'H_S_summer_diffs.txt'
+summerDiffs.to_csv(fpsummerdiffs, sep=',')
