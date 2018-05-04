@@ -18,3 +18,7 @@ HTemps['MonthDT'] = pd.to_datetime(HTemps['YYYY_MM'], format='%Y%m')
 HTemps = HTemps.set_index('MonthDT')
 
 Yrng = pd.date_range('1953', '2016', freq='AS')
+
+#list of season columns
+
+SeasonalData = pd.DataFrame(index=Yrng, columns =['Winter', 'Spring', 'Summer','Fall'])
