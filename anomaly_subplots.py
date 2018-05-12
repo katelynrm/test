@@ -22,3 +22,4 @@ Yrng = pd.date_range('1953', '2016', freq='AS')
 #list of season columns
 
 SeasonalData = pd.DataFrame(index=Yrng, columns =['Winter', 'Spring', 'Summer','Fall'])
+
